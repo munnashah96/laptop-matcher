@@ -31,7 +31,8 @@ Only output the JSON, no other text.
 
     const result = await model.generateContent(prompt)
     const text = result.response.text()
-    const jsonMatch = text.match(/\{.*\}/s)
+    //const jsonMatch = text.match(/\{.*\}/s)
+    const jsonMatch = text.match(/\{[\s\S]*\}/)
     const refinement = JSON.parse(jsonMatch ? jsonMatch[0] : text)
 
     return NextResponse.json(refinement)
