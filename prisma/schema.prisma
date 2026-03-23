@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")   // This is valid in v5
+}
+
+model Laptop {
+  id            Int     @id @default(autoincrement())
+  brand         String
+  model         String
+  processor     String
+  ram_gb        Int
+  storage_gb    Int
+  storage_type  String
+  graphics      String
+  price_usd     Int
+  weight_kg     Float
+  screen_inches Float
+  affiliate_link String?
+  image_url     String?   // 👈 new field
+  amazon_url    String?   // new
+  newegg_url    String?   // new
+  bestbuy_url   String?   // new
+
+  @@map("laptops")
+}
